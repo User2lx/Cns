@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<h1>
+    gobang
+</h1>
+{{if .Bang}}<h2>
+    Added: {{.Bang}}
+</h2>{{end}}
+<form action="/add" method="post">
+    bang:<br>
+    <input type="text" name="key"><br>
+    url (e.g. <code>https://google.com/search?hl=en&q={{"{{{q}}}"}}</code>)<br>
+    <input type="text" name="url">
+    <input type="submit" value="add">
+</form>
+</body>
+</html>
