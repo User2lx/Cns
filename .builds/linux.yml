@@ -17,5 +17,5 @@ tasks:
       upx gobang
   - deploy: |
       cd gobang
-      ssh -o StrictHostKeyChecking=no -q user@delthas.fr 'mkdir -p /srv/http/blog/gobang/linux/'
-      scp -o StrictHostKeyChecking=no -q gobang user@delthas.fr:/srv/http/blog/gobang/linux/gobang
+      ssh -p 2222 -o StrictHostKeyChecking=no -q user@delthas.fr 'mkdir -p /srv/http/blog/gobang/linux/'
+      scp -P 2222 -o StrictHostKeyChecking=no -q gobang user@delthas.fr:/srv/http/blog/gobang/linux/gobang
