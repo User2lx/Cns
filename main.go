@@ -1,5 +1,6 @@
 //go:generate picopacker index.html index.go index
 //go:generate picopacker add.html add.go add
+//go:generate picopacker list.html list.go list
 //go:generate picopacker opensearch.template.xml opensearch.go opensearch
 package main
 
@@ -51,6 +52,7 @@ func main() {
 	bangRegex := regexp.MustCompile("!([A-Za-z0-9]*)")
 	opensearchTemplate := ttemplate.Must(ttemplate.New("opensearch").Parse(string(opensearch)))
 	addTemplate := template.Must(template.New("add").Parse(string(add)))
+	listTemplate := template.Must(template.New("list").Parse(string(list)))
 
 	http.HandleFunc("/add", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "GET" {
@@ -93,6 +95,27 @@ func main() {
 			Bang string `html:"bang"`
 		}{
 			Bang: key,
+		})
+	})
+	http.HandleFunc("/list", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != "GET" {
+			w.WriteHeader(404)
+			return
+		}
+		type bang struct {
+			Name string `html:"name"`
+			Url  string `html:"url"`
+		}
+		b := make([]bang, len(bangs))
+		i := 0
+		for k, v := range bangs {
+			b[i] = bang{k, v}
+			i++
+		}
+		listTemplate.Execute(w, struct {
+			Bangs []bang `html:"bangs"`
+		}{
+			Bangs: b,
 		})
 	})
 
