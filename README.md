@@ -14,7 +14,7 @@ Usage:
 - manage bangs by stopping gobang and editing `bangs.txt`
 
 Building:
-- `go install github.com/delthas/gobang/gobang-packer`
+- `go install git.saucisseroyale.cc/delthas/picopacker`
 - make sure to `go generate` after editing any HTML files
 
 | OS | URL |
