@@ -148,6 +148,7 @@ func main() {
 		}
 
 		query = query[:matches[0]] + query[matches[1]:]
+		query = strings.Trim(query, " ")
 		u = strings.ReplaceAll(u, "{{{q}}}", query)
 
 		if !strings.Contains(u, "://") {
