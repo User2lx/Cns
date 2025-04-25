@@ -1,6 +1,5 @@
 # gobang [![builds.sr.ht status](https://builds.sr.ht/~delthas/gobang.svg)](https://builds.sr.ht/~delthas/gobang?)
 
-A small custom DuckDuckGo proxy for defining your own bangs.
 
 If no bangs are used, will redirect to Google by default.
 
